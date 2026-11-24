@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Latar jendela berwarna langit supaya tidak ada kilatan putih saat game dibuka. -->
     <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/brand</item>
-        <item name="android:colorAccent">@color/brand</item>
-        <item name="android:windowBackground">@color/surface</item>
-        <!-- Status bar terang dengan ikon gelap (dipakai di Android 14 ke bawah;
-             di Android 15+ status bar transparan dan latar jendela yang terlihat). -->
-        <item name="android:statusBarColor">@color/surface</item>
+        <item name="android:windowBackground">@color/langit</item>
+        <item name="android:statusBarColor">@color/langit</item>
+        <item name="android:navigationBarColor">@color/langit</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

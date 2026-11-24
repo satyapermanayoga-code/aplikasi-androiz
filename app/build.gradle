@@ -6,11 +6,11 @@ plugins {
 def buildNumber = (project.findProperty('buildNumber') ?: '1').toString().toInteger()
 
 android {
-    namespace 'com.proyekapk.halodunia'
+    namespace 'com.proyekapk.lompat'
     compileSdk 36
 
     defaultConfig {
-        applicationId 'com.proyekapk.halodunia'
+        applicationId 'com.proyekapk.lompat'
         minSdk 26
         targetSdk 36
         versionCode buildNumber

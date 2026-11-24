@@ -8,6 +8,7 @@ on:
       - "**"
     paths-ignore:
       - "**.md"
+      - "alat/**"
   workflow_dispatch:
 
 permissions:
@@ -44,8 +45,8 @@ jobs:
           GH_REPO: ${{ github.repository }}
           VERSI: v0.${{ github.run_number }}
         run: |
-          cp app/build/outputs/apk/debug/app-debug.apk halo-dunia.apk
-          gh release create "$VERSI" halo-dunia.apk \
+          cp app/build/outputs/apk/debug/app-debug.apk lompat-lompat.apk
+          gh release create "lompat-$VERSI" lompat-lompat.apk \
             --target "$GITHUB_SHA" \
-            --title "Halo Dunia $VERSI" \
+            --title "Lompat-Lompat $VERSI" \
             --notes "Dirakit otomatis oleh GitHub Actions dari commit ${GITHUB_SHA::7}."

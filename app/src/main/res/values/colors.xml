@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="brand">#0F766E</color>
-    <color name="surface">#F6F8F7</color>
-    <color name="ink">#12211F</color>
-    <color name="ink_soft">#5B6B68</color>
-    <color name="ic_launcher_background">#0F766E</color>
+    <color name="langit">#9FD8FF</color>
+    <color name="ic_launcher_background">#A9DCF7</color>
 </resources>
