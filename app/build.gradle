@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Nomor build dikirim oleh GitHub Actions (-PbuildNumber=...). Tanpa itu, dipakai 1.
+def buildNumber = (project.findProperty('buildNumber') ?: '1').toString().toInteger()
+
+android {
+    namespace 'com.proyekapk.halodunia'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'com.proyekapk.halodunia'
+        minSdk 26
+        targetSdk 36
+        versionCode buildNumber
+        versionName "0.${buildNumber}"
+    }
+
+    // Kunci debug disimpan di repo supaya setiap build bertanda tangan sama,
+    // sehingga versi baru bisa dipasang menimpa versi lama tanpa uninstall.
+    // Ini kunci uji coba, bukan untuk rilis ke Play Store.
+    signingConfigs {
+        debug {
+            storeFile rootProject.file('debug.keystore')
+            storeType 'pkcs12'
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}

@@ -1,0 +1,51 @@
+# Setiap ada kode baru yang masuk, GitHub merakit APK dan menerbitkannya
+# sebagai Release supaya bisa diunduh langsung dari HP.
+name: Rakit APK
+
+on:
+  push:
+    branches:
+      - "**"
+    paths-ignore:
+      - "**.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rakit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rakit:
+    name: Rakit dan terbitkan APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Ambil kode
+        uses: actions/checkout@v5
+
+      - name: Pakai Java 17
+        run: |
+          if [ -n "${JAVA_HOME_17_X64:-}" ]; then
+            echo "JAVA_HOME=$JAVA_HOME_17_X64" >> "$GITHUB_ENV"
+          fi
+
+      - name: Rakit APK
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon --stacktrace assembleDebug -PbuildNumber=${{ github.run_number }}
+
+      - name: Terbitkan APK sebagai Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          VERSI: v0.${{ github.run_number }}
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk halo-dunia.apk
+          gh release create "$VERSI" halo-dunia.apk \
+            --target "$GITHUB_SHA" \
+            --title "Halo Dunia $VERSI" \
+            --notes "Dirakit otomatis oleh GitHub Actions dari commit ${GITHUB_SHA::7}."

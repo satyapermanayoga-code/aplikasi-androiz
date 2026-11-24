@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Halo Dunia</string>
+    <string name="wave" translatable="false">👋</string>
+    <string name="title">Halo, Dunia!</string>
+    <string name="subtitle">APK ini dirakit otomatis oleh GitHub Actions dari kode yang ditulis Claude.</string>
+    <string name="tap_button">Ketuk saya</string>
+    <string name="counter_label">Diketuk %1$d kali</string>
+    <string name="version_label">Versi %1$s</string>
+</resources>

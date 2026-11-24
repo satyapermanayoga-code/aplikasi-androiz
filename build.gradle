@@ -1,0 +1,4 @@
+// Versi plugin Android ditetapkan di sini, dipakai oleh modul :app.
+plugins {
+    id 'com.android.application' version '8.13.2' apply false
+}
